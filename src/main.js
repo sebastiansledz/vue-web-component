@@ -7,6 +7,5 @@ import vueCustomElement from 'vue-custom-element'
 
 Vue.use(vueCustomElement)
 
-App.store = store
 App.router = router
 Vue.customElement('vue-widget', App)
