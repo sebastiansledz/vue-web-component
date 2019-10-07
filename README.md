@@ -1,28 +1,30 @@
-# Vue web component
+# Vue Custom Web Component
 
-> This is a stand-alone tutorial and can be used as a starting point for every next project that requires embedable widget to be placed on websites.
+> This is a stand-alone tutorial and can be used as a starting point for every next project that requires embedable widget to be placed on any web app. It is a fresh, default Vue CLI 3 instance. It is only encapsulated within HTML custom web component.
 
-To make Vue.js application embedable as a widget anywhere using only one **app.js** and one **app.css** file we created a custom web component. We are using [vue-custom-element](https://github.com/karol-f/vue-custom-element), which allows us to render our Vue.js application as an HTML custom element like `<my-app></my-app>`.
+To make Vue.js application embedable as a widget anywhere using only one **app.js** and one **app.css** file we create a custom web component. We will use [vue-custom-element](https://github.com/karol-f/vue-custom-element), which allows to render our Vue.js application as an HTML custom element like `<my-app></my-app>`.
 
-**Hint:** there is an official [Vue web component wrapper](https://github.com/vuejs/vue-web-component-wrapper) available, however I found **vue-custom-element** as a project with more live development conducted by its contributors.
+**Hint:** there is an official [Vue web component wrapper](https://github.com/vuejs/vue-web-component-wrapper) available, however I found **vue-custom-element** as a project with more active development conducted by its contributors.
 
 **Other dependencies and libraries used:**
 
 * [document-register-element](https://github.com/WebReflection/document-register-element) - a stand-alone working lightweight version of the W3C Custom Elements specification, a custom polyfill in order for our HTML custom element to work.
 
+**Let's start!**
+
 ## Create a project
 
-Use Vue CLI command `vue create vue-custom-widget` or run `vue ui` in terminal to start GUI in the browser and create a project there. You will be prompted to pick a preset. You can either choose the default preset which comes with a basic Babel + ESLint setup, or select "Manually select features" to pick the features you need.
+At first, use Vue CLI command `vue create vue-web-component` or run `vue ui` in terminal to start GUI in the browser and create a project there. You will be prompted to pick a preset. You can either choose the default preset which comes with a basic Babel + ESLint setup, or select "Manually select features" to pick the features you need.
 
-> For more information about how to create a project using Vue CLI please refer to [documentation](https://cli.vuejs.org/guide/creating-a-project.html#vue-create). To start this project we are using basic set of features, please see `package.json` of base vue-web-component repository for details.
+> For more information about how to create a project using Vue CLI please refer to [documentation](https://cli.vuejs.org/guide/creating-a-project.html#vue-create). To start this project we are using basic set of features, please see `package.json` of base [vue-web-component](https://github.com/sebastiansledz/vue-web-component) repository for details.
 
-## Optimize our application as an HTML custom element
+## Optimize application as an HTML custom element
 
-This is what **vue-custom-element** is for. It’s a wrapper for our Vue.js application and allows us to invoke it in the source code via custom HTML element.
+This is what **vue-custom-element** is for. It’s a wrapper for our Vue.js application and allows to invoke it in the source code via custom HTML element.
 
 run ```npm install vue-custom-element --save```
 
-rewrite initializing file `src/main.js` to have it as below
+and rewrite initializing file `src/main.js` to have it as below
 
 ```javascript
 // src/main.js
@@ -44,7 +46,7 @@ We are not using `new Vue()` anymore. Calling `Vue.customElement()` is doing it 
 
 Anything you’d like to include in `new Vue()` before, is supposed to be included in `App` as a property now, calling `Vue.customElement()` after all your setup is done.
 
-## Change our index.html
+## Change index.html
 
 `public/index.html`
 
@@ -55,7 +57,7 @@ We remove our `<div id="app"></div>` and replace it with the new `<vue-widget></
 run `npm install document-register-element --save`
 
 ```javascript
-// src/main.js
+// add to src/main.js
 
 import 'document-register-element/build/document-register-element'
 ```
@@ -70,9 +72,7 @@ Building gives desired source — compressed, neat and small in size. But in cas
 
 Create a **vue.config.js** file in the root of our application (next to the package.json). This is where webpack config is written in Vue CLI 3.
 
-We will need to install webpack to use its **LimitChunkCountPlugin**. We will also need to pass the config to delete split chunks.
-
-run `npm install webpack --save`
+We will use webpack **LimitChunkCountPlugin** plugin and pass the config to delete split chunks.
 
 ```javascript
 // vue.config.js
