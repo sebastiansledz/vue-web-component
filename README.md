@@ -16,7 +16,7 @@ To make Vue.js application embedable as a widget anywhere using only one **app.j
 
 At first, use Vue CLI command `vue create vue-web-component` or run `vue ui` in terminal to start GUI in the browser and create a project there. You will be prompted to pick a preset. You can either choose the default preset which comes with a basic Babel + ESLint setup, or select "Manually select features" to pick the features you need.
 
-> For more information about how to create a project using Vue CLI please refer to [documentation](https://cli.vuejs.org/guide/creating-a-project.html#vue-create). To start this project we are using basic set of features, please see `package.json` of base [vue-web-component](https://github.com/sebastiansledz/vue-web-component) repository for details.
+> For more information about how to create a project using Vue CLI please refer to [documentation](https://cli.vuejs.org/guide/creating-a-project.html#vue-create). To start this project we are using basic set of features, please see `package.json` of this repository for details.
 
 ## Optimize application as an HTML custom element
 
